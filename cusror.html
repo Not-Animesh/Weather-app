@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursor Following Dot</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      background-color: black;
+      /* Keep the default cursor */
+    }
+    
+    .circle {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      border: 1px solid lightblue;
+      border-radius: 50%;
+      pointer-events: none; /* Ensure it doesn't block the cursor */
+      transform: translate(-50%, -50%);
+    }
+    
+    .dot {
+      width: 6px;
+      height: 6px;
+      background-color: lightblue;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="circle">
+    <div class="dot"></div>
+  </div>
+  <script>
+    document.addEventListener('mousemove', (event) => {
+      const circle = document.querySelector('.circle');
+      circle.style.left = `${event.clientX}px`;
+      circle.style.top = `${event.clientY}px`;
+    });
+  </script>
+</body>
+</html>
